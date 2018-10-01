@@ -25,7 +25,7 @@ SECRET_KEY = '$pzdj+s34#8tl=u=e0!2wh#p6hp0xy@6qx68+#ylw(9yxqx+(u'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost']
+ALLOWED_HOSTS = ['localhost', 'inventory-management-portal.herokuapp.com']
 
 
 # Application definition
