@@ -67,7 +67,7 @@ def confirm_order(request, id):
     from_email = settings.EMAIL_HOST_USER
 
     body = "Hello %s!\n\nYour order for %s is confirmed for the %d prices. The amount for your order is $%s." %(order.cust_name, order.item, order.quantity, order.amount)
-    body += "\n\n You can view your order details at http://localhost/order/%s" %(order.id)
+    body += "\n\n You can view your order details at http://inventory-management-portal.herokuapp.com/order/%s" %(order.id)
 
     send_mail(
         subject,
