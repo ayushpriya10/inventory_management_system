@@ -1,0 +1,123 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="#">
+
+    <title>Whole9Yards</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="{% static 'home/dashboard.css' %}" rel="stylesheet">
+    <link href="{% static 'home/open-iconic-bootstrap.min.css'%}" rel="stylesheet">
+</head>
+
+<body>
+<nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
+    <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="{% url 'index' %}">Whole9Yards</a>
+    <a class="nav-link" style="color:white;" href="{% url 'logout' %}">Sign out</a>
+</nav>
+
+<div class="container-fluid">
+    <div class="row">
+        <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+            <div class="sidebar-sticky">
+                <ul class="nav flex-column">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="{% url 'orders-list' %}">
+                            <span data-feather="file"></span>
+                            Orders <span class="sr-only">(current)</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'items-list' %}">
+                            <span data-feather="shopping-cart"></span>
+                            Items
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'vendor-list' %}">
+                            <span data-feather="users"></span>
+                            Vendors
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'data-upload' %}">
+                            <span data-feather="layers"></span>
+                            Database Management
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+            <div class="form-group">
+                &nbsp;
+            </div>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col">
+                        <h2>List of Orders</h2>
+                    </div>
+                    <div class="col">
+                        <h6>Total Orders Listed: {{ total_rec }}</h6>
+                    </div>
+                    <div class="col">
+                        <form method="post" action="#">
+                          {% csrf_token %}
+                            <input type="submit" class="btn btn-primary float-right" value="Refresh"/>
+                        </form>
+                    </div>
+            </div>
+
+            <div class="table-responsive">
+                <table class="table table-striped table-sm">
+                    <thead>
+                    <tr>
+                        <th>Order ID</th>
+                        <th>SKU</th>
+                        <th>Quantity</th>
+                        <th>Total Cost</th>
+                        <th>Confirmation</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for record in records %}
+                        <tr>
+                            <td>{{ record.po_number }}</td>
+                            <td>{{ record.placed_status }}</td>
+                            <td>{{ record.placement_time }}</td>
+                            <td>{{ record.placement_time }}</td>
+                            <td>{{ record.placement_time }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+</div>
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="../../assets/js/vendor/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+
+<!-- Icons -->
+<script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>
+<script>
+    feather.replace()
+</script>
+</body>
+</html>

@@ -1,0 +1,93 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="#">
+
+    <title>IMS Portal</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="{% static 'home/dashboard.css' %}" rel="stylesheet">
+    <link href="{% static 'home/open-iconic-bootstrap.min.css'%}" rel="stylesheet">
+</head>
+
+<body>
+<nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
+    <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">IMS Portal</a>
+</nav>
+
+<div class="container-fluid">
+    <div class="row">
+
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+            <div class="form-group">
+                &nbsp;
+            </div>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col">
+                        <h2>Please Login to continue!</h2>
+                    </div>
+                    <div class="col">
+                        <a class="btn btn-primary float-left" href="{% url 'register' %}" >Create New Account</a>
+                    </div>
+                </div>
+
+            <div class="table-responsive">
+              <form method="post" action="login">
+              {% csrf_token %}
+              <table style="width:5%" class="table float-center">
+                <br /><br />
+                  <tbody>
+                      {% if password_fail %}
+                      <tr>
+                        <td colspan="2" style="color:red;">Password Incorrect. Please Try Again.</td>
+                      </tr>
+                      {% endif %}
+                      {% if username_fail %}
+                      <tr>
+                        <td colspan="2" style="color:red;">Username does not exist. Please Try Again.</td>
+                      </tr>
+                      {% endif %}
+                      <tr>
+                          <td>Username: </td>
+                          <td><input type="text" name="username" /></td>
+                      </tr>
+                      <tr>
+                          <td>Password: </td>
+                          <td><input type="password" name="password" /></td>
+                      </tr>
+                      <tr>
+                          <td colspan="2"><input class="btn btn-primary float-right" type="submit" value="Login" /></td>
+                      </tr>
+                  </tbody>
+              </table>
+            </form>
+            </div>
+        </main>
+    </div>
+</div>
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="../../assets/js/vendor/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+
+<!-- Icons -->
+<script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>
+<script>
+    feather.replace()
+</script>
+</body>
+</html>
